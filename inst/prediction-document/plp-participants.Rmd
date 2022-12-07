@@ -7,11 +7,11 @@ output: html_document
 The target population ``r target$name`` is defined as:
 
 ```{r results='asis', echo=FALSE}
-if (nchar(outcome$expression) > 10) {
-  markdown <- CirceR::cohortPrintFriendly(target$expression)
-} else {
+# if (nchar(outcome$expression) > 10) {
+#   markdown <- CirceR::cohortPrintFriendly(target$expression)
+# } else {
   markdown <- ""
-}
+# }
 
 markdown <- gsub('###', '####',markdown)
 cat(markdown)
