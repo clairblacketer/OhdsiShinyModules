@@ -7,11 +7,11 @@ output: html_document
 The outcome ``r outcome$name`` occurring between target ``r populationSettings$startAnchor `` + ``r populationSettings$riskWindowStart`` days and target ``r populationSettings$endAnchor`` + ``r populationSettings$riskWindowEnd `` days is defined as:
 
 ```{r results='asis', echo=FALSE}
-# if (nchar(outcome$expression) > 10) {
-#   markdown <- CirceR::cohortPrintFriendly(outcome$expression)
-# } else {
+if (nchar(outcome$expression) > 10) {
+  markdown <- CirceR::cohortPrintFriendly(outcome$expression)
+} else {
   markdown <- ""
-# }
+}
 
 markdown <- gsub('###', '####',markdown)
 cat(markdown)
