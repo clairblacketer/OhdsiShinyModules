@@ -1,4 +1,4 @@
-library(testthat)
+context("prediction-settings")
 
 shiny::testServer(
   app = predictionSettingsServer, 

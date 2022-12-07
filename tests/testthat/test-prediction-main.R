@@ -1,4 +1,4 @@
-library(testthat)
+context("prediction-main")
 
 shiny::testServer(
   app = predictionServer, 
