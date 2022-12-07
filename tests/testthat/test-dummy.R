@@ -3,11 +3,22 @@ test_that("Java works outside testServer", {
   expect_true(sql == "SELECT  * FROM x LIMIT 10;") 
 })
 
+test_that("Java works outside testServer in Rmd", {
+  rmdFile <- system.file("test.Rmd", package = "OhdsiShinyModules")
+  htmlFile <- tempfile(fileext = ".html")
+  rmarkdown::render(
+    input = rmdFile, 
+    intermediates_dir = tempdir(),
+    output_dir = htmlFile, 
+  )
+  expect_true(file.exists(htmlFile)) 
+})
+
 
 shiny::testServer(
   app = counterServer, 
   expr = {
     
-    expect_true(output$out == "SELECT  * FROM x LIMIT 10;")
+    expect_true(output$out == "TRUE")
     
   })

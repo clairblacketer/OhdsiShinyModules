@@ -16,9 +16,15 @@ counterServer <- function(id) {
         count(count() + 1)
       })
       output$out <- renderText({
-        SqlRender::translate("SELECT TOP 10 * FROM x;", "postgresql")
+        rmdFile <- system.file("test.Rmd", package = "OhdsiShinyModules")
+        htmlFile <- tempfile(fileext = ".html")
+        rmarkdown::render(
+          input = rmdFile, 
+          intermediates_dir = tempdir(),
+          output_dir = htmlFile
+        )
+        return(file.exists(htmlFile))
       })
-      count
     }
   )
 }
